@@ -12,8 +12,8 @@ const GET_FAVORITES = `
 SELECT r.RecipeID AS id, r.RecipeName, u.UserName AS RecipeAuthor, r.DateAdded, r.Description
 FROM favorites f
 JOIN recipes r ON f.RecipeID = r.RecipeID
-JOIN Users u ON r.RecipeAuthor = u.UserID
-WHERE u.UserID = ?`;
+JOIN Users u ON f.UserID = u.UserID
+WHERE f.UserID = ?`;
 export const getFavorites = (req, res) => {
   const db = new Database(cnfg);
   // let params = [];
